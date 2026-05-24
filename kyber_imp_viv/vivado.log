@@ -1,0 +1,404 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri May  8 20:30:55 2026
+# Process ID: 26864
+# Current directory: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21008 D:\MS_CY\4th_Sem\Thesis_II\files\Viv\Kyber_impl\Kyber_impl.xpr
+# Log file: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/vivado.log
+# Journal file: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.xpr
+WARNING: [Board 49-91] Board repository path 'C:/Users/mudas/AppData/Roaming/Xilinx/Vivado/2019.1/xhub/board_store' does not exist, it will not be used to search board files.
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] Board Part Repository Path: Could not find the directory 'C:/Users/mudas/AppData/Roaming/Xilinx/Vivado/2019.1/xhub/board_store'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 801.434 ; gain = 187.691
+update_compile_order -fileset sources_1
+close [ open D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v w ]
+add_files D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+close [ open D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v w ]
+add_files D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v
+update_compile_order -fileset sources_1
+file mkdir D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v w ]
+add_files -fileset sim_1 D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v
+update_compile_order -fileset sim_1
+set_property top tb_kyber512 [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_kyber512' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_kyber512_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module kyber512_decap_hybrid
+INFO: [VRFC 10-311] analyzing module ascon128
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_kyber512
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xelab -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ascon128
+Compiling module xil_defaultlib.kyber512_decap_hybrid
+Compiling module xil_defaultlib.tb_kyber512
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_kyber512_behav
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/xsim.dir/tb_kyber512_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri May  8 20:56:50 2026...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 868.551 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '8' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_kyber512_behav -key {Behavioral:sim_1:Functional:tb_kyber512} -tclbatch {tb_kyber512.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source tb_kyber512.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+WARNING: File zeta_rom.hex referenced on D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v at line 101 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_kyber512_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 872.352 ; gain = 3.801
+run all
+run: Time (s): cpu = 00:01:00 ; elapsed = 00:05:50 . Memory (MB): peak = 879.051 ; gain = 3.699
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_kyber512' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_kyber512_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module kyber512_decap_hybrid
+INFO: [VRFC 10-311] analyzing module ascon128
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_kyber512
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xelab -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ascon128
+Compiling module xil_defaultlib.kyber512_decap_hybrid
+Compiling module xil_defaultlib.tb_kyber512
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_kyber512_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_kyber512_behav -key {Behavioral:sim_1:Functional:tb_kyber512} -tclbatch {tb_kyber512.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source tb_kyber512.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+WARNING: File zeta_rom.hex referenced on D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v at line 84 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+Decapsulation Done!
+m_prime   = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ct_match  = 0
+$finish called at time : 365 ns : File "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" Line 71
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_kyber512_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 888.715 ; gain = 0.000
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+run all
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_kyber512' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_kyber512_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module kyber512_decap_hybrid
+INFO: [VRFC 10-311] analyzing module ascon128
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_kyber512
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xelab -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 384 differs from formal bit length 3072 for port 'sk_poly_0' [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v:27]
+WARNING: [VRFC 10-3091] actual bit length 384 differs from formal bit length 3072 for port 'sk_poly_1' [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v:28]
+WARNING: [VRFC 10-3091] actual bit length 320 differs from formal bit length 2560 for port 'ct_u_0' [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v:29]
+WARNING: [VRFC 10-3091] actual bit length 320 differs from formal bit length 2560 for port 'ct_u_1' [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v:30]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 1024 for port 'ct_v' [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v:31]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ascon128
+Compiling module xil_defaultlib.kyber512_decap_hybrid
+Compiling module xil_defaultlib.tb_kyber512
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_kyber512_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_kyber512_behav -key {Behavioral:sim_1:Functional:tb_kyber512} -tclbatch {tb_kyber512.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source tb_kyber512.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+WARNING: File zeta_rom.hex referenced on D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v at line 68 cannot be opened for reading. Please ensure that this file is available in the current working directory.
+Decapsulation Done!
+m_prime   = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ct_match  = 0
+$finish called at time : 365 ns : File "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" Line 71
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_kyber512_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 900.492 ; gain = 10.754
+update_compile_order -fileset sources_1
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_kyber512' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_kyber512_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber512_decap_hybrid.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module kyber512_decap_hybrid
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_kyber512
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xelab -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_kyber512_behav xil_defaultlib.tb_kyber512 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.kyber512_decap_hybrid
+Compiling module xil_defaultlib.tb_kyber512
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_kyber512_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_kyber512_behav -key {Behavioral:sim_1:Functional:tb_kyber512} -tclbatch {tb_kyber512.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source tb_kyber512.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+--------------------------------
+DECAP DONE
+m_prime  = 0000000000000000000000000000000000000000000000000000000000000000
+ct_match = 0
+--------------------------------
+$finish called at time : 225 ns : File "D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_kyber512.v" Line 96
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_kyber512_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 900.492 ; gain = 0.000
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2019.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc]
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter[0]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:54]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:54]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter[1]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:55]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:55]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter[2]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:56]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:56]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter[3]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:57]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:57]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[0]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:63]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:63]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[1]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:64]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:64]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[2]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:65]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:65]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[3]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[4]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:67]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:67]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr[5]'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:68]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:68]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'addr*'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:73]
+WARNING: [Vivado 12-584] No ports matched 'addr*'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:74]
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter*'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:76]
+WARNING: [Vivado 12-584] No ports matched 'cycle_counter*'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:77]
+WARNING: [Vivado 12-180] No cells matched 'kyber_core'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:83]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:83]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-507] No nets matched 'cycle_counter*'. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:86]
+CRITICAL WARNING: [Netlist 29-75] Setting 'KEEP' property on 'net' objects from input source 'XDC' is not supported. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:86]
+Resolution: Please refer to Vivado Properties Reference Guide (UG912) for more information on setting properties.
+CRITICAL WARNING: [Designutils 20-1307] Command 'get_runs' is not supported in the xdc constraint file. [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc:92]
+Finished Parsing XDC File [D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/constrs_1/new/kyber.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1253.844 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1421.504 ; gain = 520.852
+report_utilization -name utilization_1
+report_power -name {power_1}
+Command: report_power -name power_1
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+1 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_utilization -file utilization_report.txt
+D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/utilization_report.txt
+generate_target all [get_files  D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/design_1.bd]
+Wrote  : <D:\MS_CY\4th_Sem\Thesis_II\files\Viv\Kyber_impl\Kyber_impl.srcs\sources_1\bd\design_1\design_1.bd> 
+VHDL Output written to : D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v
+Exporting to file D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/synth/design_1.hwdef
+generate_target: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 2205.402 ; gain = 55.023
+export_ip_user_files -of_objects [get_files D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/design_1.bd]
+export_simulation -of_objects [get_files D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/bd/design_1/design_1.bd] -directory D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.ip_user_files/sim_scripts -ip_user_files_dir D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.ip_user_files -ipstatic_source_dir D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.ip_user_files/ipstatic -lib_map_path [list {modelsim=D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.cache/compile_simlib/modelsim} {questa=D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.cache/compile_simlib/questa} {riviera=D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.cache/compile_simlib/riviera} {activehdl=D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+vcd open trace.vcd
+invalid command name "vcd"
+report_power -file power_report.txt
+Command: report_power -file power_report.txt
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+0 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+with open('power_report.txt', 'r') as f:
+invalid command name "with"
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 2205.402 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu May 14 21:43:11 2026...
