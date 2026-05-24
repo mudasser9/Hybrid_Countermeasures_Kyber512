@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri May  8 20:56:48 2026
+# Process ID: 31260
+# Current directory: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/xsim.dir/tb_kyber512_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source D:/MS_CY/4th_Sem/Thesis_II/files/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/xsim.dir/tb_kyber512_behav/webtalk/xsim_webtalk.tcl -notrace
