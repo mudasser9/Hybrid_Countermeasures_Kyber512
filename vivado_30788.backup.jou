@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Nov 10 10:01:18 2026
+# Process ID: 30788
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source paper_flow/run_all.tcl
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado.jou
+#-----------------------------------------------------------
+source paper_flow/run_all.tcl

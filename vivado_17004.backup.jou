@@ -1,0 +1,31 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Jul 31 12:26:47 2026
+# Process ID: 17004
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source scripts/run_latency_sweep.tcl
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado.jou
+#-----------------------------------------------------------
+source scripts/run_latency_sweep.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl
+source tb_latency_analysis.tcl

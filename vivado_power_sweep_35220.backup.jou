@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Jul 30 21:29:51 2026
+# Process ID: 35220
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source scripts\run_power_sweep.tcl -log vivado_power_sweep.log -journal vivado_power_sweep.jou
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado_power_sweep.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado_power_sweep.jou
+#-----------------------------------------------------------
+source {scripts\run_power_sweep.tcl}

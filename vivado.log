@@ -1,0 +1,642 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Tue Nov 10 11:07:05 2026
+# Process ID: 30092
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source paper_flow/run_latency_sim.tcl
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado.jou
+#-----------------------------------------------------------
+source paper_flow/run_latency_sim.tcl
+# set script_dir [file normalize [file dirname [info script]]]
+# set proj_root  [file normalize [file join $script_dir ".."]]
+# set src_dir    [file join $proj_root "Kyber_impl.srcs/sources_1/new"]
+# set paper_dir  $script_dir
+# set sim_dir    [file join $paper_dir "sim"]
+# set vec_dir    [file join $sim_dir "vectors"]
+# set out_dir    [file join $paper_dir "out"]
+# file mkdir $out_dir
+# set work_dir [file join $out_dir "xsim_latency"]
+# file mkdir $work_dir
+# set rtl_files [list \
+#     [file join $src_dir "ntt_unit.v"] \
+#     [file join $src_dir "dummy_barrett_ops.v"] \
+#     [file join $src_dir "coeff_access_shuffle.v"] \
+#     [file join $src_dir "kyber_pwr_mult.v"] \
+#     [file join $src_dir "kyber_pwr_decaps.v"] \
+#     [file join $paper_dir "paper_tops.v"] \
+#     [file join $sim_dir "tb_inner_product.v"] \
+# ]
+# foreach f $rtl_files {
+#     if {![file exists $f]} {
+#         puts "ERROR: missing $f"
+#         exit 1
+#     }
+# }
+# if {![file exists [file join $vec_dir "vectors_inc.vh"]]} {
+#     puts "ERROR: run generate_latency_vectors.py first ($vec_dir)"
+#     exit 1
+# }
+# foreach f [glob -nocomplain [file join $vec_dir "*"]] {
+#     file copy -force $f [file join $work_dir [file tail $f]]
+# }
+# file copy -force [file join $src_dir "zeta_rom.hex"] [file join $work_dir "zeta_rom.hex"]
+# set csv [file join $out_dir "latency_cycles.csv"]
+# set cfp [open $csv w]
+# puts $cfp "variant,cycles_per_decaps_inner_product,vectors,functional_failures"
+# close $cfp
+# set variants {
+#     {C0 VARIANT_C0}
+#     {C1 VARIANT_C1}
+#     {C2 VARIANT_C2}
+# }
+# cd $work_dir
+# foreach entry $variants {
+#     lassign $entry variant defname
+#     puts "\n=== Simulating $variant ($defname) ==="
+# 
+#     set log [file join $out_dir "latency_${variant}.log"]
+# 
+#     # Compile
+#     set xvlog_cmd [list xvlog -sv]
+#     lappend xvlog_cmd -d $defname
+#     lappend xvlog_cmd -i $work_dir
+#     foreach f $rtl_files { lappend xvlog_cmd $f }
+#     puts "CMD: $xvlog_cmd"
+#     if {[catch {exec {*}$xvlog_cmd 2>@1} xvlog_out]} {
+#         puts $xvlog_out
+#         puts "ERROR: xvlog failed for $variant"
+#         continue
+#     }
+#     puts $xvlog_out
+# 
+#     if {[catch {exec xelab -debug typical tb_inner_product -s tb_${variant} 2>@1} xelab_out]} {
+#         puts $xelab_out
+#         puts "ERROR: xelab failed for $variant"
+#         continue
+#     }
+#     puts $xelab_out
+# 
+#     if {[catch {exec xsim tb_${variant} -runall 2>@1} xsim_out]} {
+#         # xsim may return non-zero; still parse log
+#         puts $xsim_out
+#     } else {
+#         puts $xsim_out
+#     }
+# 
+#     set lfp [open $log w]
+#     puts $lfp $xsim_out
+#     close $lfp
+# 
+#     # Copy detail if present
+#     if {[file exists [file join $work_dir "latency_detail.txt"]]} {
+#         file copy -force [file join $work_dir "latency_detail.txt"] \
+#             [file join $out_dir "latency_detail_${variant}.txt"]
+#     }
+# 
+#     set cycles "NOT_MEASURED"
+#     set vectors "NOT_MEASURED"
+#     set fails "NOT_MEASURED"
+#     if {[regexp {LATENCY_SUMMARY variant=\S+ cycles_per_decaps_inner_product=(\S+) vectors=(\S+) functional_failures=(\S+)} $xsim_out -> c v f]} {
+#         set cycles $c
+#         set vectors $v
+#         set fails $f
+#     }
+# 
+#     set cfp [open $csv a]
+#     puts $cfp "$variant,$cycles,$vectors,$fails"
+#     close $cfp
+#     puts "  -> $variant cycles=$cycles vectors=$vectors fails=$fails"
+# }
+
+=== Simulating C0 (VARIANT_C0) ===
+CMD: xvlog -sv -d VARIANT_C0 -i D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v" into library work
+INFO: [VRFC 10-311] analyzing module barrett_mult
+INFO: [VRFC 10-311] analyzing module butterfly_unit
+INFO: [VRFC 10-311] analyzing module ntt_unit
+INFO: [VRFC 10-311] analyzing module masked_poly_mult
+INFO: [VRFC 10-311] analyzing module kyber_decaps_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v" into library work
+INFO: [VRFC 10-311] analyzing module dummy_barrett_ops
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v" into library work
+INFO: [VRFC 10-311] analyzing module coeff_access_shuffle
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v" into library work
+INFO: [VRFC 10-311] analyzing module unprotected_poly_mult
+INFO: [VRFC 10-311] analyzing module hybrid_poly_mult
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v" into library work
+INFO: [VRFC 10-311] analyzing module kyber_pwr_decaps
+INFO: [VRFC 10-311] analyzing module kyber_pwr_unprotected
+INFO: [VRFC 10-311] analyzing module kyber_pwr_masked
+INFO: [VRFC 10-311] analyzing module kyber_pwr_hybrid
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v" into library work
+INFO: [VRFC 10-311] analyzing module C0
+INFO: [VRFC 10-311] analyzing module C1
+INFO: [VRFC 10-311] analyzing module C2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_inner_product
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:\Xilinx\Vivado\2019.1\bin\unwrapped\win64.o\xelab.exe -debug typical tb_inner_product -s tb_C0 
+Multi-threading is on. Using 6 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.barrett_mult
+Compiling module work.butterfly_unit
+Compiling module work.ntt_unit
+Compiling module work.unprotected_poly_mult
+Compiling module work.kyber_pwr_decaps_default
+Compiling module work.kyber_pwr_unprotected
+Compiling module work.C0
+Compiling module work.tb_inner_product
+Built simulation snapshot tb_C0
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency/xsim.dir/tb_C0/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Tue Nov 10 11:07:17 2026...
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_C0/xsim_script.tcl
+# xsim {tb_C0} -autoloadwcfg -runall
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+run -all
+[tb] variant=C0 NUM_VECTORS=100
+[tb] vec=0 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=1 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=2 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=3 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=4 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=5 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=6 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=7 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=8 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=9 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=10 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=11 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=12 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=13 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=14 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=15 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=16 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=17 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=18 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=19 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=20 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=21 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=22 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=23 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=24 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=25 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=26 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=27 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=28 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=29 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=30 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=31 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=32 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=33 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=34 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=35 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=36 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=37 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=38 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=39 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=40 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=41 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=42 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=43 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=44 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=45 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=46 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=47 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=48 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=49 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=50 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=51 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=52 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=53 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=54 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=55 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=56 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=57 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=58 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=59 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=60 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=61 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=62 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=63 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=64 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=65 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=66 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=67 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=68 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=69 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=70 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=71 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=72 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=73 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=74 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=75 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=76 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=77 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=78 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=79 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=80 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=81 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=82 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=83 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=84 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=85 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=86 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=87 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=88 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=89 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=90 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=91 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=92 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=93 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=94 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=95 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=96 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=97 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=98 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=99 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+LATENCY_SUMMARY variant=C0 cycles_per_decaps_inner_product=NOT_MEASURED vectors=0 functional_failures=100
+$finish called at time : 1000518105 ns : File "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" Line 225
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:07:47 . Memory (MB): peak = 221.980 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 11:15:16 2026...
+  -> C0 cycles=NOT_MEASURED vectors=0 fails=100
+
+=== Simulating C1 (VARIANT_C1) ===
+CMD: xvlog -sv -d VARIANT_C1 -i D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v" into library work
+INFO: [VRFC 10-311] analyzing module barrett_mult
+INFO: [VRFC 10-311] analyzing module butterfly_unit
+INFO: [VRFC 10-311] analyzing module ntt_unit
+INFO: [VRFC 10-311] analyzing module masked_poly_mult
+INFO: [VRFC 10-311] analyzing module kyber_decaps_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v" into library work
+INFO: [VRFC 10-311] analyzing module dummy_barrett_ops
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v" into library work
+INFO: [VRFC 10-311] analyzing module coeff_access_shuffle
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v" into library work
+INFO: [VRFC 10-311] analyzing module unprotected_poly_mult
+INFO: [VRFC 10-311] analyzing module hybrid_poly_mult
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v" into library work
+INFO: [VRFC 10-311] analyzing module kyber_pwr_decaps
+INFO: [VRFC 10-311] analyzing module kyber_pwr_unprotected
+INFO: [VRFC 10-311] analyzing module kyber_pwr_masked
+INFO: [VRFC 10-311] analyzing module kyber_pwr_hybrid
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v" into library work
+INFO: [VRFC 10-311] analyzing module C0
+INFO: [VRFC 10-311] analyzing module C1
+INFO: [VRFC 10-311] analyzing module C2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_inner_product
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:\Xilinx\Vivado\2019.1\bin\unwrapped\win64.o\xelab.exe -debug typical tb_inner_product -s tb_C1 
+Multi-threading is on. Using 6 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.barrett_mult
+Compiling module work.butterfly_unit
+Compiling module work.ntt_unit
+Compiling module work.masked_poly_mult
+Compiling module work.kyber_pwr_decaps(PROTECTION=1)
+Compiling module work.kyber_pwr_masked
+Compiling module work.C1
+Compiling module work.unprotected_poly_mult
+Compiling module work.kyber_pwr_decaps_default
+Compiling module work.kyber_pwr_unprotected
+Compiling module work.C0
+Compiling module work.tb_inner_product
+Built simulation snapshot tb_C1
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency/xsim.dir/tb_C1/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Tue Nov 10 11:15:22 2026...
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_C1/xsim_script.tcl
+# xsim {tb_C1} -autoloadwcfg -runall
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+run -all
+[tb] variant=C1 NUM_VECTORS=100
+[tb] vec=0 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=1 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=2 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=3 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=4 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=5 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=6 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=7 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=8 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=9 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=10 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=11 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=12 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=13 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=14 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=15 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=16 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=17 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=18 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=19 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=20 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=21 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=22 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=23 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=24 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=25 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=26 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=27 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=28 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=29 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=30 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=31 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=32 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=33 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=34 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=35 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=36 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=37 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=38 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=39 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=40 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=41 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=42 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=43 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=44 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=45 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=46 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=47 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=48 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=49 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=50 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=51 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=52 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=53 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=54 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=55 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=56 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=57 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=58 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=59 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=60 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=61 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=62 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=63 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=64 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=65 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=66 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=67 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=68 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=69 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=70 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=71 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=72 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=73 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=74 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=75 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=76 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=77 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=78 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=79 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=80 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=81 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=82 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=83 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=84 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=85 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=86 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=87 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=88 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=89 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=90 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=91 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=92 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=93 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=94 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=95 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=96 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=97 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=98 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=99 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+LATENCY_SUMMARY variant=C1 cycles_per_decaps_inner_product=NOT_MEASURED vectors=0 functional_failures=100
+$finish called at time : 1000518105 ns : File "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" Line 225
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:08:30 . Memory (MB): peak = 221.051 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 11:24:01 2026...
+  -> C1 cycles=NOT_MEASURED vectors=0 fails=100
+
+=== Simulating C2 (VARIANT_C2) ===
+CMD: xvlog -sv -d VARIANT_C2 -i D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v" into library work
+INFO: [VRFC 10-311] analyzing module barrett_mult
+INFO: [VRFC 10-311] analyzing module butterfly_unit
+INFO: [VRFC 10-311] analyzing module ntt_unit
+INFO: [VRFC 10-311] analyzing module masked_poly_mult
+INFO: [VRFC 10-311] analyzing module kyber_decaps_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/dummy_barrett_ops.v" into library work
+INFO: [VRFC 10-311] analyzing module dummy_barrett_ops
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/coeff_access_shuffle.v" into library work
+INFO: [VRFC 10-311] analyzing module coeff_access_shuffle
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v" into library work
+INFO: [VRFC 10-311] analyzing module unprotected_poly_mult
+INFO: [VRFC 10-311] analyzing module hybrid_poly_mult
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v" into library work
+INFO: [VRFC 10-311] analyzing module kyber_pwr_decaps
+INFO: [VRFC 10-311] analyzing module kyber_pwr_unprotected
+INFO: [VRFC 10-311] analyzing module kyber_pwr_masked
+INFO: [VRFC 10-311] analyzing module kyber_pwr_hybrid
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/paper_tops.v" into library work
+INFO: [VRFC 10-311] analyzing module C0
+INFO: [VRFC 10-311] analyzing module C1
+INFO: [VRFC 10-311] analyzing module C2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" into library work
+INFO: [VRFC 10-311] analyzing module tb_inner_product
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:\Xilinx\Vivado\2019.1\bin\unwrapped\win64.o\xelab.exe -debug typical tb_inner_product -s tb_C2 
+Multi-threading is on. Using 6 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.barrett_mult
+Compiling module work.butterfly_unit
+Compiling module work.ntt_unit
+Compiling module work.coeff_access_shuffle
+Compiling module work.dummy_barrett_ops
+Compiling module work.hybrid_poly_mult
+Compiling module work.kyber_pwr_decaps(PROTECTION=2)
+Compiling module work.kyber_pwr_hybrid
+Compiling module work.C2
+Compiling module work.unprotected_poly_mult
+Compiling module work.kyber_pwr_decaps_default
+Compiling module work.kyber_pwr_unprotected
+Compiling module work.C0
+Compiling module work.tb_inner_product
+Built simulation snapshot tb_C2
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/xsim_latency/xsim.dir/tb_C2/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Tue Nov 10 11:24:09 2026...
+
+****** xsim v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/tb_C2/xsim_script.tcl
+# xsim {tb_C2} -autoloadwcfg -runall
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+run -all
+[tb] variant=C2 NUM_VECTORS=100
+[tb] vec=0 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=1 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=2 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=3 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=4 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=5 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=6 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=7 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=8 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=9 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=10 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=11 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=12 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=13 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=14 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=15 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=16 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=17 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=18 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=19 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=20 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=21 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=22 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=23 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=24 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=25 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=26 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=27 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=28 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=29 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=30 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=31 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=32 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=33 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=34 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=35 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=36 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=37 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=38 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=39 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=40 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=41 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=42 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=43 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=44 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=45 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=46 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=47 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=48 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=49 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=50 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=51 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=52 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=53 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=54 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=55 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=56 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=57 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=58 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=59 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=60 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=61 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=62 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=63 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=64 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=65 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=66 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=67 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=68 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=69 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=70 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=71 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=72 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=73 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=74 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=75 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=76 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=77 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=78 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=79 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=80 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=81 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=82 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=83 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=84 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=85 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=86 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=87 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=88 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=89 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=90 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=91 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=92 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=93 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=94 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=95 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=96 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=97 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=98 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+[tb] vec=99 TIMEOUT dut_valid=0 gold_valid=0 cycles=1000511
+LATENCY_SUMMARY variant=C2 cycles_per_decaps_inner_product=NOT_MEASURED vectors=0 functional_failures=100
+$finish called at time : 1000518105 ns : File "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/sim/tb_inner_product.v" Line 225
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:09:30 . Memory (MB): peak = 222.109 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Tue Nov 10 11:33:49 2026...
+  -> C2 cycles=NOT_MEASURED vectors=0 fails=100
+# puts "\nCSV: $csv"
+
+CSV: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/paper_flow/out/latency_cycles.csv
+# puts "Latency_us = cycles * clk_ns / 1000 only when WNS>=0 (see compute_latency_us.py)"
+Latency_us = cycles * clk_ns / 1000 only when WNS>=0 (see compute_latency_us.py)
+# exit 0
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 10 11:33:49 2026...

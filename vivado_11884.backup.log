@@ -1,0 +1,138 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Fri Jul 31 12:21:42 2026
+# Process ID: 11884
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source scripts/smoke_latency.tcl
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado.jou
+#-----------------------------------------------------------
+source scripts/smoke_latency.tcl
+# set script_dir [file normalize [file dirname [info script]]]
+# set proj_dir   [file normalize [file join $script_dir ".."]]
+# set src_dir    [file join $proj_dir "Kyber_impl.srcs/sources_1/new"]
+# set sim_dir    [file join $proj_dir "Kyber_impl.srcs/sim_1/new"]
+# set vec_dir    [file join $proj_dir "power_vectors"]
+# set out_dir    [file join $proj_dir "latency_reports"]
+# file mkdir $out_dir
+# open_project [file join $proj_dir "Kyber_impl.xpr"]
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] Board Part Repository Path: Could not find the directory 'C:/Users/mudas/AppData/Roaming/Xilinx/Vivado/2019.1/xhub/board_store'.
+# set_property top kyber_pwr_unprotected [current_fileset]
+# set_property top tb_latency_analysis [get_filesets sim_1]
+# set_property include_dirs [list $vec_dir] [get_filesets sim_1]
+# set_property verilog_define {} [get_filesets sim_1]
+# set_property -name {xsim.simulate.runtime} -value {3ms} -objects [get_filesets sim_1]
+# set_property -name {xsim.simulate.xsim.more_options} -value {-testplusarg VECTOR_IDX=0} -objects [get_filesets sim_1]
+# set xsim [file join $proj_dir "Kyber_impl.sim/sim_1/behav/xsim"]
+# file mkdir $xsim
+# foreach f [glob -nocomplain [file join $vec_dir "*.mem"]] { file copy -force $f $xsim }
+# file copy -force [file join $vec_dir "vectors_inc.vh"] $xsim
+# file copy -force [file join $src_dir "zeta_rom.hex"] [file join $xsim "zeta_rom.hex"]
+# catch {file delete -force [file join $xsim "latency_cycles.txt"]}
+# launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_latency_analysis' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/zeta_rom.hex'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_latency_analysis_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_decaps.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module kyber_pwr_decaps
+INFO: [VRFC 10-311] analyzing module kyber_pwr_unprotected
+INFO: [VRFC 10-311] analyzing module kyber_pwr_masked
+INFO: [VRFC 10-311] analyzing module kyber_pwr_hybrid
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module unprotected_poly_mult
+INFO: [VRFC 10-311] analyzing module hybrid_poly_mult
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/ntt_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module barrett_mult
+INFO: [VRFC 10-311] analyzing module butterfly_unit
+INFO: [VRFC 10-311] analyzing module ntt_unit
+INFO: [VRFC 10-311] analyzing module masked_poly_mult
+INFO: [VRFC 10-311] analyzing module kyber_decaps_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_latency_analysis.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_latency_analysis
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+"xelab -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_latency_analysis_behav xil_defaultlib.tb_latency_analysis xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.1/bin/unwrapped/win64.o/xelab.exe -wto 524d8533576e40b4929f852f9a958e25 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_latency_analysis_behav xil_defaultlib.tb_latency_analysis xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 12 for port 'a' [D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v:105]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 12 for port 'b' [D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sources_1/new/kyber_pwr_mult.v:106]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.barrett_mult
+Compiling module xil_defaultlib.butterfly_unit
+Compiling module xil_defaultlib.ntt_unit
+Compiling module xil_defaultlib.unprotected_poly_mult
+Compiling module xil_defaultlib.masked_poly_mult
+Compiling module xil_defaultlib.hybrid_poly_mult
+Compiling module xil_defaultlib.kyber_pwr_decaps
+Compiling module xil_defaultlib.kyber_pwr_unprotected
+Compiling module xil_defaultlib.tb_latency_analysis
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_latency_analysis_behav
+
+****** Webtalk v2019.1 (64-bit)
+  **** SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim/xsim.dir/tb_latency_analysis_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Fri Jul 31 12:21:52 2026...
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_latency_analysis_behav -key {Behavioral:sim_1:Functional:tb_latency_analysis} -tclbatch {tb_latency_analysis.tcl} -log {simulate.log} -testplusarg VECTOR_IDX=0"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source tb_latency_analysis.tcl
+## current_wave_config
+[tb_latency] design=unprotected vector_idx=0
+[tb_latency] TIMEOUT fsm stuck; busy=1 result_valid=0 cycle_count=200511
+$finish called at time : 2005185 ns : File "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_latency_analysis.v" Line 139
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_latency_analysis_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 3ms
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 388.367 ; gain = 9.660
+# puts "=== SIM DONE ==="
+=== SIM DONE ===
+# catch {close_sim -force}
+INFO: [Simtcl 6-16] Simulation closed
+# set cycfile [file join $xsim "latency_cycles.txt"]
+# if {[file exists $cycfile]} {
+#     set f [open $cycfile r]; puts "CYCLES=[string trim [read $f]]"; close $f
+# } else {
+#     puts "NO cycles file"
+# }
+NO cycles file
+# set logf [file join $xsim "simulate.log"]
+# if {[file exists $logf]} {
+#     set f [open $logf r]
+#     while {[gets $f line] >= 0} {
+#         if {[string match "*tb_latency*" $line] || [string match "*CYCLE*" $line] || [string match "*TIMEOUT*" $line]} {
+#             puts $line
+#         }
+#     }
+#     close $f
+# }
+[tb_latency] design=unprotected vector_idx=0
+[tb_latency] TIMEOUT fsm stuck; busy=1 result_valid=0 cycle_count=200511
+$finish called at time : 2005185 ns : File "D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/Kyber_impl.srcs/sim_1/new/tb_latency_analysis.v" Line 139
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Fri Jul 31 12:21:57 2026...

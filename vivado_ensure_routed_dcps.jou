@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Mon Aug  3 12:18:06 2026
+# Process ID: 8752
+# Current directory: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl
+# Command line: vivado.exe -mode batch -source scripts/ensure_routed_dcps.tcl -log vivado_ensure_routed_dcps.log -journal vivado_ensure_routed_dcps.jou
+# Log file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl/vivado_ensure_routed_dcps.log
+# Journal file: D:/VirtualMachines/SharedFolder/NewViv/Viv/Kyber_impl\vivado_ensure_routed_dcps.jou
+#-----------------------------------------------------------
+source scripts/ensure_routed_dcps.tcl
