@@ -1,0 +1,32 @@
+[C0 s=0.5 lda] top1=0.363 (maj 0.325) GE@300=0.68 SR=0.52 n90=None trainacc=0.39 [0.9s]
+[C0 s=0.5 mlp] top1=0.295 (maj 0.325) GE@300=1.74 SR=0.34 n90=None trainacc=1.00 [6.3s]
+[C0 s=0.5 cnn] top1=0.325 (maj 0.325) GE@300=3.85 SR=0.01 n90=None trainacc=0.58 [52.2s]
+/home/claude/work/repo/kyber_sca_research/kyber_sca/models/dl_models.py:152: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=n_layers)
+[C0 s=0.5 transformer] top1=0.325 (maj 0.325) GE@300=2.47 SR=0.01 n90=None trainacc=0.34 [360.3s]
+[C1 s=0.5 lda] top1=0.334 (maj 0.325) GE@300=1.39 SR=0.29 n90=None trainacc=0.35 [0.1s]
+[C1 s=0.5 mlp] top1=0.273 (maj 0.325) GE@300=1.91 SR=0.29 n90=None trainacc=1.00 [5.6s]
+[C1 s=0.5 cnn] top1=0.314 (maj 0.325) GE@300=1.42 SR=0.33 n90=None trainacc=0.56 [42.8s]
+/home/claude/work/repo/kyber_sca_research/kyber_sca/models/dl_models.py:152: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=n_layers)
+[C1 s=0.5 transformer] top1=0.317 (maj 0.325) GE@300=1.45 SR=0.22 n90=None trainacc=0.32 [378.9s]
+[share-diag C1 s=0.5] share0 HW top1=0.238 (maj 0.241)
+[C2 s=0.5 lda] top1=0.321 (maj 0.341) GE@300=1.25 SR=0.31 n90=None trainacc=0.35 [0.0s]
+[C2 s=0.5 mlp] top1=0.317 (maj 0.341) GE@300=3.71 SR=0.03 n90=None trainacc=1.00 [5.6s]
+[C2 s=0.5 cnn] top1=0.300 (maj 0.341) GE@300=1.33 SR=0.28 n90=None trainacc=0.56 [42.3s]
+/home/claude/work/repo/kyber_sca_research/kyber_sca/models/dl_models.py:152: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=n_layers)
+[C2 s=0.5 transformer] top1=0.285 (maj 0.341) GE@300=1.62 SR=0.25 n90=None trainacc=0.32 [390.5s]
+[share-diag C2 s=0.5] share0 HW top1=0.214 (maj 0.222)
+[C0 s=0.1 lda] top1=0.619 (maj 0.334) GE@300=0.01 SR=0.99 n90=10 trainacc=0.65 [0.0s]
+[C0 s=0.1 mlp] top1=0.382 (maj 0.334) GE@300=1.69 SR=0.34 n90=None trainacc=1.00 [5.3s]
+[C0 s=0.1 cnn] top1=0.520 (maj 0.334) GE@300=0.60 SR=0.59 n90=None trainacc=0.65 [43.4s]
+[C1 s=0.1 lda] top1=0.332 (maj 0.344) GE@300=0.94 SR=0.46 n90=None trainacc=0.36 [0.0s]
+[C1 s=0.1 mlp] top1=0.289 (maj 0.344) GE@300=3.96 SR=0.00 n90=None trainacc=1.00 [5.3s]
+[C1 s=0.1 cnn] top1=0.337 (maj 0.344) GE@300=3.93 SR=0.00 n90=None trainacc=0.54 [43.8s]
+[share-diag C1 s=0.1] share0 HW top1=0.232 (maj 0.228)
+[C2 s=0.1 lda] top1=0.325 (maj 0.324) GE@300=1.19 SR=0.31 n90=None trainacc=0.34 [0.0s]
+[C2 s=0.1 mlp] top1=0.287 (maj 0.324) GE@300=3.63 SR=0.00 n90=None trainacc=1.00 [5.1s]
+[C2 s=0.1 cnn] top1=0.299 (maj 0.324) GE@300=1.48 SR=0.35 n90=None trainacc=0.52 [43.8s]
+[share-diag C2 s=0.1] share0 HW top1=0.220 (maj 0.235)
+DONE

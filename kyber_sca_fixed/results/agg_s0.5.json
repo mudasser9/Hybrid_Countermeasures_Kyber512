@@ -1,0 +1,1 @@
+{"C1 position known": {"GE_2000": 1.02, "SR_2000": 0.39, "n50": null, "n90": null, "SR_1": 0.25, "SR_300": 0.33}, "C2 oracle (location given)": {"GE_2000": 1.08, "SR_2000": 0.37, "n50": null, "n90": null, "SR_1": 0.35, "SR_300": 0.36}, "C2 aggregate over all positions": {"GE_2000": 1.2, "SR_2000": 0.33, "n50": null, "n90": null, "SR_1": 0.33, "SR_300": 0.33}}
