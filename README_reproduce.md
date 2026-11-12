@@ -49,17 +49,6 @@ shrink-only `\resizebox` (used for the files in `paper_experiments/results/`).
   leaking only if the threshold is exceeded for all three fixed secrets.
 * Same noise σ for all configurations (σ = 0.1 and 0.5), trace length 1 536.
 
-## Differences from the original repository simulator (`traces/simulator.py`)
-
-1. Random keys for profiling (the original used `fixed_key=True`, making the label a single class — its saved
-   `results.json` shows top-1 = 1.0 and SNR = 0 for all three modes).
-2. One σ for all configurations (original: 0.5 / 1.0 / 2.0 for unmasked / masked / hybrid).
-3. Constant signal scale HW/12 (original: per-trace min–max normalisation).
-4. Masked and hybrid traces leak both shares of all 512 coefficients (original hybrid: one share, 64 per polynomial).
-5. Shuffling over all 512 operations with a fresh permutation per trace (original: 64 of 256, per polynomial).
-6. Rank evaluation on fixed-key attack sets, as needed to accumulate evidence over traces (the original scored each trace
-   against its own label, which is only meaningful when every attack trace shares one secret).
-7. The original `tv_test.py` is not a TVLA (it compares two Gaussian samples of 5 000 values); `run_tvla.py` replaces it.
 
 ## Not in this package / still open
 
